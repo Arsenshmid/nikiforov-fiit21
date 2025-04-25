@@ -8,10 +8,12 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
-          submodules: true
+          submodules: true  # подтягивает тему
           fetch-depth: 0
 
       - name: Setup Hugo
@@ -20,10 +22,10 @@ jobs:
           hugo-version: '0.146.7'
           extended: true
 
-      - name: Build
+      - name: Build site
         run: hugo --minify
 
-      - name: Deploy
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
@@ -31,4 +33,3 @@ jobs:
           publish_branch: gh-pages
           user_name: 'Arsen Shmid'
           user_email: 'apce2@mail.ru'
-
