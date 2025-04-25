@@ -9,10 +9,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
-          submodules: true  # чтобы тема работала
+          submodules: true
           fetch-depth: 0
 
       - name: Setup Hugo
@@ -21,10 +20,10 @@ jobs:
           hugo-version: '0.146.7'
           extended: true
 
-      - name: Build site
+      - name: Build
         run: hugo --minify
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
