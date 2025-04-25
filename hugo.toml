@@ -1,0 +1,4 @@
+baseURL = "https://arsenshmid.github.io/nikiforov-fiit21/"
+languageCode = "en-us"
+title = "Arsen's FIIT21 Site"
+theme = "ananke"
